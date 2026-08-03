@@ -21,6 +21,58 @@ The public case study is being designed for two audiences:
 
 This repository is a curated technical case study rather than a release of the complete production trading system.
 
+## Executable Portfolio Examples
+
+This repository includes sanitized, deterministic examples based on engineering
+patterns developed during the larger private platform project.
+
+| Example | Demonstrates |
+|---|---|
+| `expected_value_example.py` | Cost-aware expected-value calculations for YES and NO contracts |
+| `order_reconciliation_example.py` | Partial fills, cumulative fills, position hydration, and idempotent reconciliation |
+| `strategy_evaluation_example.py` | Synthetic pandas/NumPy research, transaction-cost scenarios, and cross-cost classification |
+| `data_validation_example.py` | Schema validation, normalization, malformed-record rejection, and issue reporting |
+| `risk_controls_example.py` | Position limits, exposure limits, duplicate-order prevention, side restrictions, and daily-loss controls |
+| `execution_funnel_example.py` | Submitted-order, exchange-execution, and internal-position conversion diagnostics |
+
+All examples use synthetic or sanitized data. They do not contain exchange
+credentials, account information, private production logs, or proprietary
+strategy parameters.
+
+## Automated Verification
+
+Every push and pull request runs an automated GitHub Actions workflow across:
+
+- Python 3.11
+- Python 3.12
+- Python 3.13
+
+The current suite contains **112 unique unit tests**, representing **336 test
+executions per workflow run** across the three-version matrix.
+
+The tests cover:
+
+- Expected-value and transaction-cost calculations
+- Input validation and defensive coding
+- Partial and full order fills
+- Idempotent duplicate-event handling
+- Order-to-position reconciliation
+- Synthetic strategy evaluation
+- Cost-sensitive performance classification
+- Market-data cleaning and normalization
+- Pre-trade risk controls
+- Execution-funnel conversion diagnostics
+
+The workflow also executes the strategy-evaluation, data-validation, risk-control, and execution-funnel examples and verifies their reported results. The expected-value and order-reconciliation modules are validated through their dedicated unit tests.
+
+Latest verified status:
+
+```text
+112 tests passed
+Python 3.11: PASS
+Python 3.12: PASS
+Python 3.13: PASS
+```
 ## Why the Project Was Built
 
 The original objective was to build an automated system capable of:
@@ -122,7 +174,7 @@ The investigation required tracing several interconnected components:
 
 The work identified that execution quality could not be evaluated solely from strategy signals. Order behavior, exchange acknowledgments, internal state synchronization, and position reconciliation were equally important.
 
-A dedicated debugging case study will document this investigation without exposing account information, private logs, credentials, or complete production logic.
+The dedicated execution-debugging case study documents this investigation without exposing account information, private logs, credentials, or complete production logic.
 
 ## Research Integrity
 
@@ -181,41 +233,40 @@ The process emphasized:
 
 This repository will distinguish between demonstrated understanding, AI-assisted implementation, observed evidence, and unresolved limitations.
 
-## Repository Plan
-
-The completed case study is expected to contain:
+## Current Repository Structure
 
 ```text
 kalshi-prediction-market-research/
-├── README.md
+├── .github/
+│   └── workflows/
+│       └── python-tests.yml
 ├── docs/
-│   ├── technical-case-study.md
-│   ├── institutional-overview.md
 │   ├── architecture.md
 │   ├── execution-debugging-case-study.md
-│   ├── research-methodology.md
 │   ├── findings-and-limitations.md
-│   └── collaboration-overview.md
+│   ├── institutional-overview.md
+│   ├── research-methodology.md
+│   └── technical-case-study.md
 ├── examples/
-│   ├── expected-value-example.py
-│   ├── order-reconciliation-example.py
-│   ├── strategy-evaluation-example.py
-│   └── data-validation-example.py
+│   ├── data_validation_example.py
+│   ├── execution_funnel_example.py
+│   ├── expected_value_example.py
+│   ├── order_reconciliation_example.py
+│   ├── risk_controls_example.py
+│   └── strategy_evaluation_example.py
 ├── tests/
-│   ├── test-expected-value.py
-│   └── test-reconciliation.py
-├── sample-data/
-│   └── synthetic-market-data.csv
-├── assets/
-│   ├── system-architecture.png
-│   ├── execution-flow.png
-│   └── research-summary.png
+│   ├── test_data_validation.py
+│   ├── test_execution_funnel.py
+│   ├── test_expected_value.py
+│   ├── test_order_reconciliation.py
+│   ├── test_risk_controls.py
+│   └── test_strategy_evaluation.py
+├── README.md
 ├── requirements.txt
-├── SECURITY.md
-└── LICENSE
+└── SECURITY.md
 ```
 
-Files will be added incrementally after review and sanitization.
+Additional sample data, visual assets, collaboration materials, and licensing information may be added after review and sanitization.
 
 ## Public and Private Boundaries
 
