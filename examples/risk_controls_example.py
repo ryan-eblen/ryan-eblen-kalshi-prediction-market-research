@@ -193,11 +193,19 @@ def validate_limits(limits: RiskLimits) -> tuple[str, ...]:
         for side in limits.allowed_sides
     )
 
-    if len(set(normalized_sides)) != len(normalized_sides):
-        raise ValueError("allowed_sides cannot contain duplicates.")
+   if len(set(normalized_sides)) != len(normalized_sides):
+       raise ValueError("allowed_sides cannot contain duplicates.")
+
+    invalid_sides = set(normalized_sides).difference(
+        {"YES", "NO"}
+    )
+
+    if invalid_sides:
+        raise ValueError(
+            "allowed_sides may contain only YES and NO."
+        )
 
     return normalized_sides
-
 
 def validate_position(position: OpenPosition) -> None:
     """Validate one existing synthetic position."""
@@ -346,8 +354,16 @@ def evaluate_order_risk(
         -float(snapshot.realized_pnl),
     )
 
+    normalized_processed_order_ids = tuple(
+        validate_nonempty_text(
+            processed_order_id,
+            "processed order ID",
+        )
+        for processed_order_id in snapshot.processed_order_ids
+    )
+
     unique_order_passed = (
-        order_id not in snapshot.processed_order_ids
+        order_id not in normalized_processed_order_ids
     )
     side_passed = side in allowed_sides
     order_quantity_passed = (
