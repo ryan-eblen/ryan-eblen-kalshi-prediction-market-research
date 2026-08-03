@@ -160,7 +160,6 @@ def normalize_side(value: str) -> str:
 
     return validate_nonempty_text(value, "side").upper()
 
-
 def validate_limits(limits: RiskLimits) -> tuple[str, ...]:
     """Validate risk-limit configuration and normalize allowed sides."""
 
@@ -193,8 +192,8 @@ def validate_limits(limits: RiskLimits) -> tuple[str, ...]:
         for side in limits.allowed_sides
     )
 
-   if len(set(normalized_sides)) != len(normalized_sides):
-       raise ValueError("allowed_sides cannot contain duplicates.")
+    if len(set(normalized_sides)) != len(normalized_sides):
+        raise ValueError("allowed_sides cannot contain duplicates.")
 
     invalid_sides = set(normalized_sides).difference(
         {"YES", "NO"}
@@ -206,7 +205,7 @@ def validate_limits(limits: RiskLimits) -> tuple[str, ...]:
         )
 
     return normalized_sides
-
+    
 def validate_position(position: OpenPosition) -> None:
     """Validate one existing synthetic position."""
 
