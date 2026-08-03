@@ -60,3 +60,6 @@ jobs:
 
       - name: Run data validation example
         run: python examples/data_validation_example.py
+
+      - name: Run risk controls example
+        run: python examples/risk_controls_example.py
