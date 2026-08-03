@@ -263,6 +263,9 @@ deactivate
 
 The `(.venv)` indicator will disappear from the Terminal prompt.
 
+For a recorded local execution result, see
+[Local Reproducibility Verification](docs/local-verification.md).
+
 ## Why the Project Was Built
 
 The original objective was to build an automated system capable of:
@@ -435,6 +438,7 @@ kalshi-prediction-market-research/
 │   ├── execution-debugging-case-study.md
 │   ├── findings-and-limitations.md
 │   ├── institutional-overview.md
+│   ├── local-verification.md
 │   ├── research-methodology.md
 │   └── technical-case-study.md
 ├── examples/
