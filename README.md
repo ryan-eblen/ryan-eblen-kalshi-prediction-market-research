@@ -1,5 +1,7 @@
 # Kalshi Prediction-Market Research Platform
 
+[![Python tests](https://github.com/ryan-eblen/kalshi-prediction-market-research/actions/workflows/python-tests.yml/badge.svg)](https://github.com/ryan-eblen/kalshi-prediction-market-research/actions/workflows/python-tests.yml)
+
 A sanitized case study of an independently developed Python platform for prediction-market execution, quantitative research, and live-system diagnostics.
 
 > **Project status:** Private portfolio construction
