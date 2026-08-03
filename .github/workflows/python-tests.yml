@@ -63,3 +63,6 @@ jobs:
 
       - name: Run risk controls example
         run: python examples/risk_controls_example.py
+
+      - name: Run execution funnel example
+        run: python examples/execution_funnel_example.py
