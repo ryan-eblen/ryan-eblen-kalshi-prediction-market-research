@@ -57,3 +57,6 @@ jobs:
 
       - name: Run strategy evaluation example
         run: python examples/strategy_evaluation_example.py
+
+      - name: Run data validation example
+        run: python examples/data_validation_example.py
