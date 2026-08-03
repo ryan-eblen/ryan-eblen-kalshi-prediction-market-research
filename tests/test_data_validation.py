@@ -69,9 +69,15 @@ class TestDataValidation(unittest.TestCase):
 
         report = validate_decision_data(self.source)
 
+        timestamp_series = report.cleaned_data["timestamp_utc"]
+
+        self.assertIsInstance(
+            timestamp_series.dtype,
+            pd.DatetimeTZDtype,
+        )
         self.assertEqual(
-            str(report.cleaned_data["timestamp_utc"].dtype),
-            "datetime64[ns, UTC]",
+            str(timestamp_series.dtype.tz),
+            "UTC",
         )
 
     def test_duplicate_identifiers_report_both_rows(self) -> None:
