@@ -73,6 +73,196 @@ Python 3.11: PASS
 Python 3.12: PASS
 Python 3.13: PASS
 ```
+## Quick Start
+
+The commands below create an isolated Python environment inside the cloned
+repository. Run the commands from the macOS Terminal application.
+
+### 1. Install the macOS Command Line Tools
+
+Git and other required command-line utilities are provided through Apple’s
+Command Line Tools.
+
+```bash
+xcode-select --install
+```
+
+Allow the installation to finish, then verify it:
+
+```bash
+xcode-select -p
+git --version
+```
+
+A successful `xcode-select -p` result normally displays:
+
+```text
+/Library/Developer/CommandLineTools
+```
+
+### 2. Create a Local GitHub Projects Folder
+
+```bash
+mkdir -p ~/Documents/GitHub
+cd ~/Documents/GitHub
+```
+
+Confirm the current location:
+
+```bash
+pwd
+```
+
+The result should resemble:
+
+```text
+/Users/your-username/Documents/GitHub
+```
+
+### 3. Clone the Repository
+
+```bash
+git clone https://github.com/ryan-eblen/kalshi-prediction-market-research.git
+cd kalshi-prediction-market-research
+```
+
+Because the repository may be private during portfolio development, GitHub may
+request authentication. Follow the GitHub sign-in or browser-authentication
+prompt. Do not place credentials or access tokens inside the repository.
+
+After entering the repository, confirm the location:
+
+```bash
+pwd
+```
+
+The path should end with:
+
+```text
+/Documents/GitHub/kalshi-prediction-market-research
+```
+
+Confirm the repository files are present:
+
+```bash
+ls
+```
+
+The output should include:
+
+```text
+README.md
+SECURITY.md
+docs
+examples
+requirements.txt
+tests
+```
+
+### 4. Confirm the Python Version
+
+```bash
+python3 --version
+```
+
+The automated workflow tests Python 3.11, 3.12, and 3.13.
+
+### 5. Create the Virtual Environment
+
+Create the virtual environment from the repository root—the folder containing
+`README.md`, `requirements.txt`, `examples/`, and `tests/`.
+
+```bash
+python3 -m venv .venv
+```
+
+This creates the local environment here:
+
+```text
+kalshi-prediction-market-research/.venv/
+```
+
+Do not create `.venv` inside `examples/`, `tests/`, or `docs/`. The `.venv`
+directory is local development infrastructure and should not be committed to
+GitHub.
+
+### 6. Activate the Virtual Environment
+
+On macOS or Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+A successful activation normally adds `(.venv)` to the Terminal prompt.
+
+Confirm that Python is running from the repository environment:
+
+```bash
+which python
+```
+
+The path should end with:
+
+```text
+kalshi-prediction-market-research/.venv/bin/python
+```
+
+On Windows PowerShell, use:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+### 7. Install the Dependencies
+
+With the virtual environment active:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### 8. Run the Full Test Suite
+
+Run this command from the repository root:
+
+```bash
+python -m unittest discover -s tests -p "test_*.py" -v
+```
+
+Expected result:
+
+```text
+Ran 112 tests
+
+OK
+```
+
+### 9. Run the Executable Examples
+
+```bash
+python examples/expected_value_example.py
+python examples/order_reconciliation_example.py
+python examples/strategy_evaluation_example.py
+python examples/data_validation_example.py
+python examples/risk_controls_example.py
+python examples/execution_funnel_example.py
+```
+
+All examples use synthetic or sanitized information. They require no exchange
+credentials or account access.
+
+### 10. Deactivate the Environment
+
+When finished:
+
+```bash
+deactivate
+```
+
+The `(.venv)` indicator will disappear from the Terminal prompt.
+
 ## Why the Project Was Built
 
 The original objective was to build an automated system capable of:
