@@ -21,6 +21,39 @@ The public case study is being designed for two audiences:
 
 This repository is a curated technical case study rather than a release of the complete production trading system.
 
+## Start Here
+
+This repository supports two primary review paths.
+
+### Python, AI, and Data-Analysis Review
+
+For a concise review of the Python engineering work:
+
+1. [Technical Case Study](docs/technical-case-study.md)
+2. [System Architecture](docs/architecture.md)
+3. [`examples/`](examples) — sanitized runnable Python modules
+4. [`tests/`](tests) — automated unit tests
+5. [Local Reproducibility Verification](docs/local-verification.md)
+
+The repository currently includes 112 unique unit tests, validated across Python
+3.11, 3.12, and 3.13 through GitHub Actions.
+
+### Prediction-Market and Institutional Review
+
+For execution, market-structure, and quantitative-research review:
+
+1. [Institutional Overview](docs/institutional-overview.md)
+2. [Execution Debugging Case Study](docs/execution-debugging-case-study.md)
+3. [Research Methodology](docs/research-methodology.md)
+4. [Findings and Limitations](docs/findings-and-limitations.md)
+5. [`execution_funnel_example.py`](examples/execution_funnel_example.py)
+6. [`order_reconciliation_example.py`](examples/order_reconciliation_example.py)
+7. [`risk_controls_example.py`](examples/risk_controls_example.py)
+
+The public materials are intentionally sanitized. Complete production source
+code, credentials, private account information, raw live-trading records, and
+proprietary strategy parameters remain private.
+
 ## Executable Portfolio Examples
 
 This repository includes sanitized, deterministic examples based on engineering
