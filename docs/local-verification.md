@@ -53,7 +53,7 @@ python -m unittest discover -s tests -p "test_*.py" -v
 Verified result:
 
 ```text
-Ran 112 tests in 0.191s
+Ran 132 tests in 0.191s
 
 OK
 ```
@@ -193,14 +193,26 @@ The diagnostic correctly identified:
 Executed, not hydrated:     ('order-004', 'order-005')
 Duplicate events ignored:   ('order-001:ORDER_EXECUTED',)
 ```
+### SQL Reconciliation
+
+```bash
+python examples/sql_reconciliation_example.py
+```
+```text
+Orders:                     6
+Execution rows:             7
+Positions:                  4
+P&L records:                5
+Diagnostic record count:    5
+```
 
 ## Verification Result
 
 ```text
 Local macOS verification: PASS
 Python 3.13.14: PASS
-Unit tests: 112 of 112 passed
-Executable examples: 6 of 6 completed successfully
+Unit tests: 132 of 132 passed
+Executable examples: 7 of 7 completed successfully
 ```
 
 The local results were consistent with the automated GitHub Actions workflow,
