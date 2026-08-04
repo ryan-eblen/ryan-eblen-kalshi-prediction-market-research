@@ -4,7 +4,8 @@
 
 A sanitized case study of an independently developed Python platform for prediction-market execution, quantitative research, and live-system diagnostics.
 
-**Project status:** Portfolio-ready; private pending final release audit  
+**Project status:** Public portfolio release
+
 **Author:** Ryan Eblen  
 **Contact:** [ryan.eblen.work@gmail.com](mailto:ryan.eblen.work@gmail.com)
 
