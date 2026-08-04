@@ -4,9 +4,9 @@
 
 A sanitized case study of an independently developed Python platform for prediction-market execution, quantitative research, and live-system diagnostics.
 
-> **Project status:** Private portfolio construction
-> **Author:** Ryan Eblen
-> **Contact:** [ryan.eblen.work@gmail.com](mailto:ryan.eblen.work@gmail.com)
+**Project status:** Portfolio-ready; private pending final release audit  
+**Author:** Ryan Eblen  
+**Contact:** [ryan.eblen.work@gmail.com](mailto:ryan.eblen.work@gmail.com)
 
 ## Project Overview
 
@@ -14,7 +14,7 @@ This repository documents the architecture, research methodology, debugging proc
 
 The project combines exchange connectivity, real-time market data, simulated and live order processing, position management, execution reconciliation, predictive-model evaluation, historical replay, counterfactual analysis, and deterministic research validation.
 
-The public case study is being designed for two audiences:
+The public case study is designed for two audiences:
 
 * Employers and technical reviewers evaluating Python, data-analysis, debugging, and quantitative-system experience
 * Prediction-market firms, market makers, platforms, researchers, and institutions interested in execution infrastructure, market research, or potential collaboration
@@ -35,7 +35,7 @@ For a concise review of the Python engineering work:
 4. [`tests/`](tests) — automated unit tests
 5. [Local Reproducibility Verification](docs/local-verification.md)
 
-The repository currently includes 112 unique unit tests, validated across Python
+The repository currently includes 132 unique unit tests, validated across Python
 3.11, 3.12, and 3.13 through GitHub Actions.
 
 ### Prediction-Market and Institutional Review
@@ -56,8 +56,7 @@ proprietary strategy parameters remain private.
 
 ## Executable Portfolio Examples
 
-This repository includes sanitized, deterministic examples based on engineering
-patterns developed during the larger private platform project.
+This repository includes seven sanitized, deterministic examples based on engineering patterns developed during the larger private platform project.
 
 | Example | Demonstrates |
 |---|---|
@@ -67,6 +66,16 @@ patterns developed during the larger private platform project.
 | `data_validation_example.py` | Schema validation, normalization, malformed-record rejection, and issue reporting |
 | `risk_controls_example.py` | Position limits, exposure limits, duplicate-order prevention, side restrictions, and daily-loss controls |
 | `execution_funnel_example.py` | Submitted-order, exchange-execution, and internal-position conversion diagnostics |
+| [`sql_reconciliation_example.py`](examples/sql_reconciliation_example.py) | SQLite schema constraints, parameterized queries, transaction rollback, duplicate-execution detection, position reconciliation, and daily realized P&L |
+
+### SQL Reconciliation
+
+[`examples/sql_reconciliation_example.py`](examples/sql_reconciliation_example.py)
+
+Builds an in-memory SQLite reconciliation database using synthetic orders,
+executions, positions, and P&L records. It demonstrates parameterized queries,
+foreign-key constraints, transaction rollback, duplicate-execution detection,
+execution-to-position reconciliation, and daily realized P&L aggregation.
 
 All examples use synthetic or sanitized data. They do not contain exchange
 credentials, account information, private production logs, or proprietary
@@ -80,7 +89,7 @@ Every push and pull request runs an automated GitHub Actions workflow across:
 - Python 3.12
 - Python 3.13
 
-The current suite contains **112 unique unit tests**, representing **336 test
+The current suite contains **132 unique unit tests**, representing **396 test
 executions per workflow run** across the three-version matrix.
 
 The tests cover:
@@ -95,13 +104,22 @@ The tests cover:
 - Market-data cleaning and normalization
 - Pre-trade risk controls
 - Execution-funnel conversion diagnostics
+- SQLite schema and foreign-key constraints
+- Parameterized SQL queries
+- Transaction rollback behavior
+- Duplicate-execution detection
+- Execution-to-position reconciliation
+- Daily realized P&L aggregation
 
-The workflow also executes the strategy-evaluation, data-validation, risk-control, and execution-funnel examples and verifies their reported results. The expected-value and order-reconciliation modules are validated through their dedicated unit tests.
+The workflow also executes the strategy-evaluation, data-validation, risk-control,
+execution-funnel, and SQL-reconciliation examples to confirm that they complete
+successfully. The expected-value and order-reconciliation modules are validated
+through their dedicated unit tests.
 
 Latest verified status:
 
 ```text
-112 tests passed
+132 tests passed
 Python 3.11: PASS
 Python 3.12: PASS
 Python 3.13: PASS
@@ -189,6 +207,7 @@ SECURITY.md
 docs
 examples
 requirements.txt
+sql
 tests
 ```
 
@@ -267,7 +286,7 @@ python -m unittest discover -s tests -p "test_*.py" -v
 Expected result:
 
 ```text
-Ran 112 tests
+Ran 132 tests
 
 OK
 ```
@@ -281,6 +300,7 @@ python examples/strategy_evaluation_example.py
 python examples/data_validation_example.py
 python examples/risk_controls_example.py
 python examples/execution_funnel_example.py
+python examples/sql_reconciliation_example.py
 ```
 
 All examples use synthetic or sanitized information. They require no exchange
@@ -427,6 +447,7 @@ The project uses or has incorporated:
 * pandas
 * NumPy
 * JSON and CSV data
+* SQL and SQLite
 * REST APIs
 * WebSockets
 * Object-oriented design
@@ -457,7 +478,7 @@ The process emphasized:
 * Comparing expected and observed outputs
 * Preserving detailed technical handoffs
 
-This repository will distinguish between demonstrated understanding, AI-assisted implementation, observed evidence, and unresolved limitations.
+This repository distinguishes between demonstrated understanding, AI-assisted implementation, observed evidence, and unresolved limitations.
 
 ## Current Repository Structure
 
@@ -474,12 +495,16 @@ kalshi-prediction-market-research/
 │   ├── local-verification.md
 │   ├── research-methodology.md
 │   └── technical-case-study.md
+├── sql/
+│   ├── reconciliation_queries.sql
+│   └── schema.sql
 ├── examples/
 │   ├── data_validation_example.py
 │   ├── execution_funnel_example.py
 │   ├── expected_value_example.py
 │   ├── order_reconciliation_example.py
 │   ├── risk_controls_example.py
+│   ├── sql_reconciliation_example.py
 │   └── strategy_evaluation_example.py
 ├── tests/
 │   ├── test_data_validation.py
@@ -487,13 +512,13 @@ kalshi-prediction-market-research/
 │   ├── test_expected_value.py
 │   ├── test_order_reconciliation.py
 │   ├── test_risk_controls.py
-│   └── test_strategy_evaluation.py
+│   ├── test_strategy_evaluation.py
+│   └── test_sql_reconciliation.py
+├── .gitignore
 ├── README.md
 ├── requirements.txt
 └── SECURITY.md
 ```
-
-Additional sample data, visual assets, collaboration materials, and licensing information may be added after review and sanitization.
 
 ## Public and Private Boundaries
 
