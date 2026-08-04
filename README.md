@@ -518,6 +518,7 @@ kalshi-prediction-market-research/
 │   └── test_sql_reconciliation.py
 ├── .gitignore
 ├── README.md
+├── pyproject.toml
 ├── requirements.txt
 └── SECURITY.md
 ```
@@ -562,6 +563,19 @@ The project may be relevant to discussions involving:
 * Platform testing and feedback
 * Research or technical collaboration
 * Contract or employment opportunities
+
+## Code Use
+
+This repository is provided for professional review, research discussion, and
+educational evaluation.
+
+Unless a separate license is added, no permission is granted to reproduce,
+distribute, modify, sublicense, or incorporate the repository’s code into
+another commercial or production system.
+
+The absence of an open-source license is intentional. The complete production
+platform, proprietary strategy logic, credentials, private infrastructure, and
+raw live-trading records are not included.
 
 ## Disclaimer
 
