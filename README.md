@@ -42,13 +42,14 @@ The repository currently includes 132 unique unit tests, validated across Python
 
 For execution, market-structure, and quantitative-research review:
 
-1. [Institutional Overview](docs/institutional-overview.md)
-2. [Execution Debugging Case Study](docs/execution-debugging-case-study.md)
-3. [Research Methodology](docs/research-methodology.md)
-4. [Findings and Limitations](docs/findings-and-limitations.md)
-5. [`execution_funnel_example.py`](examples/execution_funnel_example.py)
-6. [`order_reconciliation_example.py`](examples/order_reconciliation_example.py)
-7. [`risk_controls_example.py`](examples/risk_controls_example.py)
+1. [Institutional Review Guide](docs/institutional-review-guide.md)
+2. [Institutional Overview](docs/institutional-overview.md)
+3. [Execution Debugging Case Study](docs/execution-debugging-case-study.md)
+4. [Research Methodology](docs/research-methodology.md)
+5. [Findings and Limitations](docs/findings-and-limitations.md)
+6. [`execution_funnel_example.py`](examples/execution_funnel_example.py)
+7. [`order_reconciliation_example.py`](examples/order_reconciliation_example.py)
+8. [`risk_controls_example.py`](examples/risk_controls_example.py)
 
 The public materials are intentionally sanitized. Complete production source
 code, credentials, private account information, raw live-trading records, and
@@ -491,6 +492,7 @@ kalshi-prediction-market-research/
 │   ├── architecture.md
 │   ├── execution-debugging-case-study.md
 │   ├── findings-and-limitations.md
+│   ├── institutional-review-guide.md
 │   ├── institutional-overview.md
 │   ├── local-verification.md
 │   ├── research-methodology.md
