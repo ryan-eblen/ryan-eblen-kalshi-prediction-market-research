@@ -10,3 +10,6 @@ select = [
     "F",
     "I",
 ]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 1
